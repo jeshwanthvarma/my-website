@@ -404,11 +404,11 @@
     transition: all 0.4s ease;
 }
 
-/* Fix for profile image - show full face */
+/* Fix for profile image alignment */
 .profile-avatar img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* CHANGED FROM 'cover' TO 'contain' */
+    object-fit: cover;
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -420,6 +420,7 @@
     transform: scale(1.1) rotate(5deg);
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
 }
+
 
         /* 
         This is a comment 
@@ -1093,11 +1094,19 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 1000px;
-            }
-        }
+    .hero-layout {
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* EXISTING: Adjusting .container for smaller screens (You already have this) */
+     @media (max-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+}
 
         @media (max-width: 992px) {
             .hero {
@@ -1239,8 +1248,11 @@
     </header>
 
     <!-- Hero Section -->
-<section class="hero" id="home">
-    <div class="container" style="display: flex; gap: 4rem; justify-content: space-between; align-items: center;">
+     <section class="hero" id="home">
+         <div class="container hero-layout">
+            
+         </div>
+    ...
         <div class="hero-content">
             <span style="color: var(--primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">Hello, I'm</span>
             <h1>Jeshwa Varma</h1>
