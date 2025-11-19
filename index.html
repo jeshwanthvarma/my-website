@@ -1832,52 +1832,53 @@
         const closeModal = document.querySelector('.close-modal');
 
         // Project details data
-        const projectDetails = {
-            'movie-master': {
-                title: 'The Movie Master: A Cloud-Based Search Engine',
-                description: 'A sophisticated cloud-enabled movie search engine fortified with sentiment analysis capabilities, revolutionizing the cinematic exploration experience. This BCA project provides personalized cinematic journeys by searching for movies based on title, genre, or actor using robust cloud infrastructure.',
-                technologies: ['AWS', 'MongoDB', 'IMDb API', 'React', 'Node.js', 'Cloud Infrastructure', 'RDBMS', 'NLP'],
-                features: [
-                    'Cloud-based search module with scalable infrastructure',
-                    'Sentiment analysis of user reviews using NLP models',
-                    'Personalized movie recommendations',
-                    'Real-time movie data processing',
-                    'User-friendly interface with movie posters and ratings',
-                    'Comprehensive movie information (actors, directors, genres)'
-                ],
-                achievements: [
-                    'BCA Project at Koneru Lakshmaiah University',
-                    'Successfully deployed on AWS cloud infrastructure',
-                    'Integrated real-time movie data from multiple sources',
-                    'Implemented sentiment analysis for user reviews'
-                ],
-                github: '#',
-                liveDemo: '#',
-                document: 'About the movie master.pdf.pdf'
-            },
-            'twitter-analysis': {
-                title: 'Twitter Intent Analysis System',
-                description: 'A deep learning-powered system designed to automatically categorize tweets based on user intent. This project addresses the challenge of understanding underlying intent behind user tweets using Natural Language Processing and Recurrent Neural Networks.',
-                technologies: ['AWS', 'Twitter API', 'Machine Learning', 'Deep Learning', 'Python', 'RNN', 'NLP', 'TensorFlow'],
-                features: [
-                    'Deep learning model for tweet classification',
-                    'Natural Language Processing for feature extraction',
-                    'Recurrent Neural Networks (RNNs) implementation',
-                    'Real-time Twitter data processing',
-                    'User intent categorization and sentiment analysis',
-                    'Crisis management and trend identification capabilities'
-                ],
-                achievements: [
-                    'Accurate classification of user intents from tweets',
-                    'Implemented tokenization and stemming/lemmatization',
-                    'Domain-specific analysis with industry jargon understanding',
-                    'High precision, recall, and F1 score performance'
-                ],
-                github: '#',
-                liveDemo: '#',
-                document: 'About Twitter Intent Analysis.pdf.pdf'
-            }
-        };
+        // Project details data
+const projectDetails = {
+    'movie-master': {
+        title: 'The Movie Master: A Cloud-Based Search Engine',
+        description: 'A sophisticated cloud-enabled movie search engine fortified with sentiment analysis capabilities, revolutionizing the cinematic exploration experience. This BCA project provides personalized cinematic journeys by searching for movies based on title, genre, or actor using robust cloud infrastructure.',
+        technologies: ['AWS', 'MongoDB', 'IMDb API', 'React', 'Node.js', 'Cloud Infrastructure', 'RDBMS', 'NLP'],
+        features: [
+            'Cloud-based search module with scalable infrastructure',
+            'Sentiment analysis of user reviews using NLP models',
+            'Personalized movie recommendations',
+            'Real-time movie data processing',
+            'User-friendly interface with movie posters and ratings',
+            'Comprehensive movie information (actors, directors, genres)'
+        ],
+        achievements: [
+            'BCA Project at Koneru Lakshmaiah University',
+            'Successfully deployed on AWS cloud infrastructure',
+            'Integrated real-time movie data from multiple sources',
+            'Implemented sentiment analysis for user reviews'
+        ],
+        github: 'https://github.com/jeshwanthvarma/THE-MOVIE-MASTER',
+        liveDemo: '#',
+        document: 'About the movie master.pdf.pdf'
+    },
+    'twitter-analysis': {
+        title: 'Twitter Intent Analysis System',
+        description: 'A deep learning-powered system designed to automatically categorize tweets based on user intent. This project addresses the challenge of understanding underlying intent behind user tweets using Natural Language Processing and Recurrent Neural Networks.',
+        technologies: ['AWS', 'Twitter API', 'Machine Learning', 'Deep Learning', 'Python', 'RNN', 'NLP', 'TensorFlow'],
+        features: [
+            'Deep learning model for tweet classification',
+            'Natural Language Processing for feature extraction',
+            'Recurrent Neural Networks (RNNs) implementation',
+            'Real-time Twitter data processing',
+            'User intent categorization and sentiment analysis',
+            'Crisis management and trend identification capabilities'
+        ],
+        achievements: [
+            'Accurate classification of user intents from tweets',
+            'Implemented tokenization and stemming/lemmatization',
+            'Domain-specific analysis with industry jargon understanding',
+            'High precision, recall, and F1 score performance'
+        ],
+        github: '',
+        liveDemo: '',
+        document: 'About Twitter Intent Analysis.pdf.pdf'
+    }
+};
 
         // Open modal when View Details is clicked
         viewDetailsBtns.forEach(btn => {
@@ -1901,50 +1902,62 @@
         });
 
         function showProjectDetails(projectId) {
-            const project = projectDetails[projectId];
+    const project = projectDetails[projectId];
+    
+    // Generate buttons based on project
+    let buttonsHTML = '';
+    
+    if (projectId === 'movie-master') {
+        buttonsHTML = `
+            <a href="${project.github}" class="btn" target="_blank">
+                <i class="fab fa-github"></i> GitHub Code
+            </a>
+            <a href="${project.document}" class="btn btn-outline" target="_blank">
+                <i class="fas fa-file-pdf"></i> Project PDF
+            </a>
+        `;
+    } else if (projectId === 'twitter-analysis') {
+        buttonsHTML = `
+            <a href="${project.document}" class="btn" target="_blank">
+                <i class="fas fa-file-pdf"></i> Download Project PDF
+            </a>
+        `;
+    }
+    
+    modalBody.innerHTML = `
+        <div class="project-modal-content">
+            <h2>${project.title}</h2>
+            <p class="project-description">${project.description}</p>
             
-            modalBody.innerHTML = `
-                <div class="project-modal-content">
-                    <h2>${project.title}</h2>
-                    <p class="project-description">${project.description}</p>
-                    
-                    <div class="project-details-section">
-                        <h3>🛠️ Technologies Used</h3>
-                        <div class="project-tech">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                    </div>
-                    
-                    <div class="project-details-section">
-                        <h3>⭐ Key Features</h3>
-                        <ul class="features-list">
-                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="project-details-section">
-                        <h3>🏆 Achievements</h3>
-                        <ul class="achievements-list">
-                            ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="project-links">
-                        <a href="${project.github}" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> GitHub Code
-                        </a>
-                        <a href="${project.liveDemo}" class="btn btn-outline" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
-                        <a href="${project.document}" class="btn btn-outline" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Project PDF
-                        </a>
-                    </div>
+            <div class="project-details-section">
+                <h3>🛠️ Technologies Used</h3>
+                <div class="project-tech">
+                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
-            `;
+            </div>
             
-            projectModal.style.display = 'block';
-        }
+            <div class="project-details-section">
+                <h3>⭐ Key Features</h3>
+                <ul class="features-list">
+                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div class="project-details-section">
+                <h3>🏆 Achievements</h3>
+                <ul class="achievements-list">
+                    ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div class="project-links">
+                ${buttonsHTML}
+            </div>
+        </div>
+    `;
+    
+    projectModal.style.display = 'block';
+}
 
         // Enhanced smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
