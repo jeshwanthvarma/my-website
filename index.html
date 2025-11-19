@@ -388,27 +388,38 @@
             animation: shine 8s infinite linear;
         }
 
-        .profile-avatar 
-        {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background: transparent; /* CHANGED THIS LINE */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2rem;
-        position: relative;
-        z-index: 1;
-        overflow: hidden;
-        box-shadow: var(--neon-glow);
-        transition: all 0.4s ease;
-        }
+      .profile-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: var(--neon-glow);
+    transition: all 0.4s ease;
+}
 
-        .floating-card:hover .profile-avatar {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
-        }
+/* Fix for profile image alignment */
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.floating-card:hover .profile-avatar {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+}
 
         /* 
         This is a comment 
