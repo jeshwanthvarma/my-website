@@ -1322,6 +1322,122 @@
                 font-size: 2.5rem;
             }
         }
+                /* === MOBILE FIXES - ADD THIS SECTION === */
+        @media (max-width: 768px) {
+            /* Fix hero section layout */
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-content {
+                margin-bottom: 3rem;
+            }
+            
+            /* Fix font sizes for mobile */
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                padding-left: 0;
+            }
+            
+            .hero p::before {
+                display: none;
+            }
+            
+            /* Fix button layout */
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            /* Fix floating card size */
+            .floating-card {
+                width: 100%;
+                max-width: 320px;
+                padding: 2rem;
+            }
+            
+            /* Fix section padding */
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 60px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            /* Fix project cards */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .project-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            
+            /* Fix modal for mobile */
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 2rem;
+            }
+            
+            /* Fix contact section */
+            .contact-container {
+                gap: 2rem;
+            }
+            
+            .contact-item {
+                padding: 1.5rem;
+            }
+            
+            /* Fix resume section */
+            .resume-content {
+                padding: 2rem;
+            }
+            
+            .resume-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small devices */
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .floating-card {
+                padding: 1.5rem;
+            }
+            
+            .profile-avatar {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        /* === END MOBILE FIXES === */
     </style>
 </head>
 <body>
