@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeshwanth Varma MV | Cloud Engineer</title>
+    <title>Jeshwa Varma | Cloud Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -355,7 +355,7 @@
         .floating-card {
             max-width: 420px;
             width: 90%;
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 24px;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -388,47 +388,35 @@
             animation: shine 8s infinite linear;
         }
 
-      .profile-avatar {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    box-shadow: var(--neon-glow);
-    transition: all 0.4s ease;
-}
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+            transition: all 0.4s ease;
+        }
 
-/* Fix for profile image alignment */
-.profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+        /* Fix for profile image - show full face */
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
 
-.floating-card:hover .profile-avatar {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
-}
-
-
-        /* 
-        This is a comment 
-        .profile-avatar i {
-            font-size: 5rem;
-            color: white;
-        } 
-        */
+        .floating-card:hover .profile-avatar {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+        }
 
         .social-links {
             display: flex;
@@ -1093,20 +1081,138 @@
             box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
         }
 
-        /* Responsive Design */
-    .hero-layout {
-    display: flex;
-    gap: 4rem;
-    justify-content: space-between;
-    align-items: center;
-}
+        /* Project Modal Styles */
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
 
-/* EXISTING: Adjusting .container for smaller screens (You already have this) */
-     @media (max-width: 1200px) {
-    .container {
-        max-width: 1000px;
-    }
-}
+        .modal-content {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--neon-glow);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        /* Enhanced Project Modal Styles */
+        .project-modal-content {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .project-modal-content h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .project-description {
+            color: var(--gray-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .project-details-section {
+            margin-bottom: 2rem;
+        }
+
+        .project-details-section h3 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list, .achievements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .features-list li, .achievements-list li {
+            padding: 0.5rem 0;
+            color: var(--gray-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .achievements-list li::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Scrollbar styling for modal */
+        .project-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .project-modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .project-modal-content::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1000px;
+            }
+        }
 
         @media (max-width: 992px) {
             .hero {
@@ -1248,47 +1354,43 @@
     </header>
 
     <!-- Hero Section -->
-     <section class="hero" id="home">
-         <div class="container hero-layout">
-            
-         </div>
-    ...
-        <div class="hero-content">
-            <span style="color: var(--primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">Hello, I'm</span>
-            <h1>Jeshwa Varma</h1>
-            <p>I'm a passionate Cloud Engineer specializing in modernizing infrastructure, automating deployments, and building scalable, reliable solutions using AWS, Kubernetes, and DevOps practices.</p>
-            <div class="btn-group">
-                <a href="#projects" class="btn">
-                    View Projects <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    Get in Touch <i class="far fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="floating-card">
-                <div class="profile-avatar">
-                     <img src="my-photo.jpg.jpg" alt="Jeshwa Varma" 
-                          onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';">
-                </div>
-                <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Cloud Architect</h3>
-                <p style="padding:0; margin: 0 0 1.5rem; color: var(--accent);">DevOps & Automation Expert</p>
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/jeshwanth-varma" target="_blank" class="social-link" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
+    <section class="hero" id="home">
+        <div class="container" style="display: flex; gap: 4rem; justify-content: space-between; align-items: center;">
+            <div class="hero-content">
+                <span style="color: var(--primary); font-size: 1.2rem; display: block; margin-bottom: 1rem;">Hello, I'm</span>
+                <h1>Jeshwa Varma</h1>
+                <p>I'm a passionate Cloud Engineer specializing in modernizing infrastructure, automating deployments, and building scalable, reliable solutions using AWS, Kubernetes, and DevOps practices.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn">
+                        View Projects <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="https://github.com/jeshwanthvarma" target="_blank" class="social-link" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:jeshwanthvarma8@gmail.com" class="social-link" title="Email">
-                        <i class="far fa-envelope"></i>
+                    <a href="#contact" class="btn btn-outline">
+                        Get in Touch <i class="far fa-envelope"></i>
                     </a>
                 </div>
             </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <div class="profile-avatar">
+                        <img src="my-photo.jpg.jpg" alt="Jeshwa Varma">
+                    </div>
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Cloud Architect</h3>
+                    <p style="padding:0; margin: 0 0 1.5rem; color: var(--accent);">DevOps & Automation Expert</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/jeshwanth-varma" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/jeshwanthvarma" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:jeshwanthvarma8@gmail.com" class="social-link" title="Email">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- About Section -->
     <section id="about">
@@ -1389,8 +1491,12 @@
                             <span>AWS</span>
                             <span>MongoDB</span>
                             <span>IMDb API</span>
+                            <span>React</span>
+                            <span>Node.js</span>
                         </div>
-                        <a href="#" class="btn">View Details</a>
+                        <a href="#movie-master-details" class="btn view-details-btn" data-project="movie-master">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -1405,8 +1511,11 @@
                             <span>Twitter API</span>
                             <span>Machine Learning</span>
                             <span>Deep Learning</span>
+                            <span>Python</span>
                         </div>
-                        <a href="#" class="btn">View Details</a>
+                        <a href="#twitter-analysis-details" class="btn view-details-btn" data-project="twitter-analysis">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1498,112 +1607,112 @@
                         </div>
                     </div>
                     <div class="resume-actions">
-    <a href="my-resume.pdf.pdf" class="btn" target="_blank">
-        <i class="fas fa-eye"></i> View Full Resume
-    </a>
-    <a href="my-resume.pdf.pdf" class="btn btn-outline" download>
-        <i class="fas fa-download"></i> Download Resume
-    </a>
-</div>
+                        <a href="my-resume.pdf.pdf" class="btn" target="_blank">
+                            <i class="fas fa-eye"></i> View Full Resume
+                        </a>
+                        <a href="my-resume.pdf.pdf" class="btn btn-outline" download>
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
- <section id="contact">
-    <div class="container">
-        <div class="section-title">
-            <h2>Contact Me</h2>
-            <p>Get in touch for opportunities or collaborations</p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                
-                <a href="tel:+918187879679" style="text-decoration: none; color: inherit;">
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div class="contact-text">
-                            <h4>Phone</h4>
-                            <p>+91 8187879679</p>
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Get in touch for opportunities or collaborations</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    
+                    <a href="tel:+918187879679" style="text-decoration: none; color: inherit;">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+91 8187879679</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                
-                <a href="mailto:jeshwanthvarma8@gmail.com" style="text-decoration: none; color: inherit;">
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-text">
-                            <h4>Email Me</h4>
-                            <p>jeshwanthvarma8@gmail.com</p>
+                    </a>
+                    
+                    <a href="mailto:jeshwanthvarma8@gmail.com" style="text-decoration: none; color: inherit;">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <h4>Email Me</h4>
+                                <p>jeshwanthvarma8@gmail.com</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="https://linkedin.com/in/jeshwanth-varma" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://linkedin.com/in/jeshwanth-varma" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div class="contact-text">
+                                <h4>LinkedIn Profile</h4>
+                                <p>Connect with me professionally</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/jeshwanthvarma" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-github"></i></div>
+                            <div class="contact-text">
+                                <h4>GitHub Portfolio</h4>
+                                <p>View my code repositories</p>
+                            </div>
+                        </div>
+                    </a>
+
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
                         <div class="contact-text">
-                            <h4>LinkedIn Profile</h4>
-                            <p>Connect with me professionally</p>
+                            <h4>Location</h4>
+                            <p>Hyderabad, Telangana, India</p>
                         </div>
                     </div>
-                </a>
 
-                <a href="https://github.com/jeshwanthvarma" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fab fa-github"></i></div>
-                        <div class="contact-text">
-                            <h4>GitHub Portfolio</h4>
-                            <p>View my code repositories</p>
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
                         </div>
-                    </div>
-                </a>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Location</h4>
-                        <p>Hyderabad, Telangana, India</p>
+                        <div class="contact-text">
+                            <h4>Website</h4>
+                            <p>jeshwanthvarma.kesug.com</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Website</h4>
-                        <p>jeshwanthvarma.kesug.com</p>
-                    </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
                 </div>
             </div>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -1624,6 +1733,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Project details will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Scroll to Top Button -->
     <div class="scroll-to-top">
@@ -1706,21 +1825,126 @@
             contactForm.reset();
         });
 
-        // Resume actions
-        const viewResumeBtn = document.getElementById('viewResumeBtn');
-        const downloadResumeBtn = document.getElementById('downloadResumeBtn');
-        
-        viewResumeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Opening full resume in new tab...');
-            // In a real implementation, this would open a PDF or link to a detailed resume page
+        // Project Details Modal
+        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+        const projectModal = document.getElementById('projectModal');
+        const modalBody = document.getElementById('modal-body');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Project details data
+        const projectDetails = {
+            'movie-master': {
+                title: 'The Movie Master: A Cloud-Based Search Engine',
+                description: 'A sophisticated cloud-enabled movie search engine fortified with sentiment analysis capabilities, revolutionizing the cinematic exploration experience. This BCA project provides personalized cinematic journeys by searching for movies based on title, genre, or actor using robust cloud infrastructure.',
+                technologies: ['AWS', 'MongoDB', 'IMDb API', 'React', 'Node.js', 'Cloud Infrastructure', 'RDBMS', 'NLP'],
+                features: [
+                    'Cloud-based search module with scalable infrastructure',
+                    'Sentiment analysis of user reviews using NLP models',
+                    'Personalized movie recommendations',
+                    'Real-time movie data processing',
+                    'User-friendly interface with movie posters and ratings',
+                    'Comprehensive movie information (actors, directors, genres)'
+                ],
+                achievements: [
+                    'BCA Project at Koneru Lakshmaiah University',
+                    'Successfully deployed on AWS cloud infrastructure',
+                    'Integrated real-time movie data from multiple sources',
+                    'Implemented sentiment analysis for user reviews'
+                ],
+                github: '#',
+                liveDemo: '#',
+                document: 'About the movie master.pdf.pdf'
+            },
+            'twitter-analysis': {
+                title: 'Twitter Intent Analysis System',
+                description: 'A deep learning-powered system designed to automatically categorize tweets based on user intent. This project addresses the challenge of understanding underlying intent behind user tweets using Natural Language Processing and Recurrent Neural Networks.',
+                technologies: ['AWS', 'Twitter API', 'Machine Learning', 'Deep Learning', 'Python', 'RNN', 'NLP', 'TensorFlow'],
+                features: [
+                    'Deep learning model for tweet classification',
+                    'Natural Language Processing for feature extraction',
+                    'Recurrent Neural Networks (RNNs) implementation',
+                    'Real-time Twitter data processing',
+                    'User intent categorization and sentiment analysis',
+                    'Crisis management and trend identification capabilities'
+                ],
+                achievements: [
+                    'Accurate classification of user intents from tweets',
+                    'Implemented tokenization and stemming/lemmatization',
+                    'Domain-specific analysis with industry jargon understanding',
+                    'High precision, recall, and F1 score performance'
+                ],
+                github: '#',
+                liveDemo: '#',
+                document: 'About Twitter Intent Analysis.pdf.pdf'
+            }
+        };
+
+        // Open modal when View Details is clicked
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project');
+                showProjectDetails(projectId);
+            });
         });
-        
-        downloadResumeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Downloading resume PDF...');
-            // In a real implementation, this would trigger a file download
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            projectModal.style.display = 'none';
         });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === projectModal) {
+                projectModal.style.display = 'none';
+            }
+        });
+
+        function showProjectDetails(projectId) {
+            const project = projectDetails[projectId];
+            
+            modalBody.innerHTML = `
+                <div class="project-modal-content">
+                    <h2>${project.title}</h2>
+                    <p class="project-description">${project.description}</p>
+                    
+                    <div class="project-details-section">
+                        <h3>🛠️ Technologies Used</h3>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="project-details-section">
+                        <h3>⭐ Key Features</h3>
+                        <ul class="features-list">
+                            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="project-details-section">
+                        <h3>🏆 Achievements</h3>
+                        <ul class="achievements-list">
+                            ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="${project.github}" class="btn" target="_blank">
+                            <i class="fab fa-github"></i> GitHub Code
+                        </a>
+                        <a href="${project.liveDemo}" class="btn btn-outline" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="${project.document}" class="btn btn-outline" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Project PDF
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            projectModal.style.display = 'block';
+        }
 
         // Enhanced smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1740,14 +1964,16 @@
             });
         });
 
-        // Scroll to top functionality
+        // Scroll to top functionality - FIXED
         const scrollTopBtn = document.querySelector('.scroll-to-top');
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (scrollTopBtn) {
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
 
         // Initialize animations
         const timelineItems = document.querySelectorAll('.timeline-item');
