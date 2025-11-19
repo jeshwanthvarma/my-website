@@ -388,20 +388,21 @@
             animation: shine 8s infinite linear;
         }
 
-        .profile-avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            box-shadow: var(--neon-glow);
-            transition: all 0.4s ease;
+        .profile-avatar 
+        {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: transparent; /* CHANGED THIS LINE */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        box-shadow: var(--neon-glow);
+        transition: all 0.4s ease;
         }
 
         .floating-card:hover .profile-avatar {
@@ -409,10 +410,13 @@
             box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
         }
 
+        /* 
+        This is a comment 
         .profile-avatar i {
             font-size: 5rem;
             color: white;
-        }
+        } 
+        */
 
         .social-links {
             display: flex;
@@ -1242,7 +1246,8 @@
         <div class="hero-image">
             <div class="floating-card">
                 <div class="profile-avatar">
-                    <img src="my-photo.jpg.jpg" alt="Jeshwa Varma" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                     <img src="my-photo.jpg.jpg" alt="Jeshwa Varma" 
+                          onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';">
                 </div>
                 <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Cloud Architect</h3>
                 <p style="padding:0; margin: 0 0 1.5rem; color: var(--accent);">DevOps & Automation Expert</p>
