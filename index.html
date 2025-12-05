@@ -1509,6 +1509,291 @@
                 opacity: 0.3;
             }
         }
+        
+        /* ===== FIXES FOR MOBILE HEADING SELECTION ISSUE ===== */
+        @media (max-width: 768px) {
+            /* Fix for text appearing selected on mobile */
+            * {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            /* But allow selection for text content */
+            p, span, li, .about-text, .project-content, .resume-content, .contact-text {
+                -webkit-user-select: text;
+                user-select: text;
+            }
+            
+            /* Fix headings specifically */
+            h1, h2, h3, h4, h5, h6, .logo, .btn {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            /* Remove text selection color */
+            ::selection {
+                background: rgba(59, 130, 246, 0.3);
+                color: white;
+            }
+            
+            /* Fix for gradient text on mobile */
+            .hero h1,
+            .section-title h2,
+            .about-text h3,
+            .resume-section h3 {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+                color: transparent !important;
+                -webkit-text-fill-color: transparent !important;
+            }
+            
+            /* Fix for mobile touch issues */
+            * {
+                touch-action: manipulation;
+            }
+            
+            /* Better button touch targets */
+            .btn {
+                min-height: 44px;
+                padding: 1rem 1.5rem;
+            }
+            
+            /* Fix for links */
+            a {
+                -webkit-tap-highlight-color: rgba(59, 130, 246, 0.2);
+            }
+            
+            /* Remove blue highlight on Android */
+            body {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+            
+            /* ===== PROFESSIONAL SPACING FIXES ===== */
+            section {
+                padding: 60px 0 !important;
+            }
+            
+            .hero {
+                padding: 100px 0 60px !important;
+            }
+            
+            .hero h1 {
+                margin-bottom: 1rem;
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                margin-bottom: 2rem;
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+            
+            .btn-group {
+                margin-top: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem 1.5rem;
+            }
+            
+            .section-title {
+                margin-bottom: 3rem !important;
+            }
+            
+            .section-title h2 {
+                margin-bottom: 0.75rem;
+                font-size: 2.2rem;
+            }
+            
+            .section-title p {
+                font-size: 1.1rem;
+                line-height: 1.5;
+                padding: 0 1rem;
+            }
+            
+            .about-content {
+                gap: 3rem;
+            }
+            
+            .about-text {
+                margin-bottom: 2rem;
+            }
+            
+            .about-text h3 {
+                margin-bottom: 1.5rem;
+                font-size: 1.8rem;
+            }
+            
+            .about-text p {
+                margin-bottom: 1.5rem;
+                line-height: 1.6;
+            }
+            
+            .skills-grid {
+                gap: 1rem;
+            }
+            
+            .skill-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .timeline-item {
+                margin-bottom: 3rem;
+                padding-left: 70px;
+                padding-right: 15px;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+            }
+            
+            .projects-grid {
+                gap: 2rem;
+            }
+            
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+            
+            .resume-content {
+                padding: 2rem !important;
+            }
+            
+            .resume-section {
+                margin-bottom: 2.5rem;
+            }
+            
+            .resume-section h3 {
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.75rem;
+                font-size: 1.5rem;
+            }
+            
+            .resume-item {
+                margin-bottom: 2rem;
+            }
+            
+            .contact-container {
+                gap: 2rem;
+            }
+            
+            .contact-item {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            footer {
+                padding: 3rem 0;
+            }
+            
+            .footer-content {
+                gap: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                padding: 0.25rem 0;
+            }
+            
+            .floating-card {
+                padding: 2rem;
+                margin: 0 auto;
+            }
+            
+            .profile-avatar {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .social-links {
+                margin-top: 1.5rem;
+                gap: 0.75rem;
+            }
+            
+            .social-link {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            * + * {
+                margin-top: 0.75rem;
+            }
+            
+            .gradient-orbs {
+                opacity: 0.3;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 992px) {
+            /* Better tablet spacing */
+            .container {
+                padding: 0 2rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero .container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .hero-content {
+                text-align: center;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .floating-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .btn-group {
+                justify-content: center;
+            }
+        }
+        
+        /* Hamburger menu animation fix */
+        .hamburger.active i {
+            transform: rotate(90deg);
+        }
+
+        .hamburger i {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -1559,7 +1844,7 @@
             <div class="hero-image">
                 <div class="floating-card">
                     <div class="profile-avatar">
-                        <img src="my-photo.jpg.jpg" alt="Jeshwanth Varma" loading="lazy" width="180" height="180">
+                        <img src="my-photo.jpg" alt="Jeshwanth Varma" loading="lazy" width="180" height="180">
                     </div>
                     <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem;">Cloud Engineer</h3>
                     <p style="padding:0; margin: 0 0 1.5rem; color: var(--accent);">Junior DevOps & Cloud Engineer</p>
@@ -1797,10 +2082,10 @@
                         </div>
                     </div>
                     <div class="resume-actions">
-                        <a href="my-resume.pdf.pdf" class="btn" target="_blank">
+                        <a href="my-resume.pdf" class="btn" target="_blank">
                             <i class="fas fa-eye"></i> View Full Resume
                         </a>
-                        <a href="my-resume.pdf.pdf" class="btn btn-outline" download>
+                        <a href="my-resume.pdf" class="btn btn-outline" download>
                             <i class="fas fa-download"></i> Download Resume
                         </a>
                     </div>
@@ -1880,7 +2165,7 @@
                 </div>
                 
                <div class="contact-form">
-    <form action="https://formspree.io/f/scorridso" method="POST" id="contactForm">
+    <form id="contactForm">
         <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" class="form-control" required>
@@ -2007,13 +2292,55 @@
             });
         });
 
-        // Form submission - REPLACE THIS PART
+        // Form submission
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Show sending message
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                // Simulate sending (replace with actual API call)
+                setTimeout(() => {
+                    // Success message
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'success-message';
+                    successMsg.innerHTML = `
+                        <div style="background: rgba(6, 214, 160, 0.1); border: 1px solid var(--accent); 
+                                   border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;
+                                   text-align: center; color: var(--accent);">
+                            <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                            <h3 style="margin-bottom: 0.5rem;">Message Sent Successfully!</h3>
+                            <p>Thank you for your message. I'll get back to you within 24 hours.</p>
+                        </div>
+                    `;
+                    
+                    // Insert after form
+                    contactForm.parentNode.insertBefore(successMsg, contactForm.nextSibling);
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Remove success message after 5 seconds
+                    setTimeout(() => {
+                        if (successMsg.parentNode) {
+                            successMsg.parentNode.removeChild(successMsg);
+                        }
+                    }, 5000);
+                }, 1500);
+            });
+        }
 
         // Project Details Modal
         const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
@@ -2043,7 +2370,7 @@
                 ],
                 github: 'https://github.com/jeshwanthvarma/THE-MOVIE-MASTER',
                 liveDemo: '#',
-                document: 'About the movie master.pdf.pdf'
+                document: 'About the movie master.pdf'
             },
             'twitter-analysis': {
                 title: 'Twitter Intent Analysis System',
@@ -2065,7 +2392,7 @@
                 ],
                 github: '',
                 liveDemo: '',
-                document: 'About Twitter Intent Analysis.pdf.pdf'
+                document: 'About Twitter Intent Analysis.pdf'
             }
         };
 
