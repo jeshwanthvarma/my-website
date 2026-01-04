@@ -1955,9 +1955,10 @@
 
     <script>
         // Initialize EmailJS with your credentials
-        (function() {
-            emailjs.init("oSx-GRG1Oi35xR2CzxXX9");
-        })();
+        emailjs.init({
+  publicKey: "oSx-GRG1Oi35xR2CzxXX9"
+});
+
 
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contactForm');
@@ -2003,15 +2004,17 @@
                         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     })
                     .catch(function(error) {
-                        console.log('FAILED...', error);
-                        
-                        // Show error message
-                        errorMessage.style.display = 'block';
-                        successMessage.style.display = 'none';
-                        
-                        // Scroll to error message
-                        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    })
+    console.error('EMAILJS ERROR:', error);
+    alert("EmailJS Error:\n" + JSON.stringify(error, null, 2));
+
+    // Show error message
+    errorMessage.style.display = 'block';
+    successMessage.style.display = 'none';
+
+    // Scroll to error message
+    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+})
+
                     .finally(function() {
                         // Reset button state
                         submitBtn.classList.remove('loading');
