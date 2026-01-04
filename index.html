@@ -6,6 +6,7 @@
     <title>Jeshwanth Varma M V| Cloud Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #3B82F6;
@@ -1014,6 +1015,79 @@
             resize: vertical;
         }
 
+        /* EmailJS Success/Error Messages */
+        .form-message {
+            display: none;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        .success-message {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: #2ecc71;
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+        }
+
+        .form-message i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-message h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .form-message p {
+            color: inherit;
+            opacity: 0.9;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading State */
+        .btn.loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
         /* Enhanced Footer */
         footer {
             background: rgba(0, 0, 0, 0.3);
@@ -1207,243 +1281,186 @@
             border-radius: 3px;
         }
 
-       /* === RESPONSIVE DESIGN - CLEAN VERSION === */
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1000px;
+            }
+        }
 
-@media (max-width: 1200px) {
-    .container {
-        max-width: 1000px;
-    }
-}
-
-@media (max-width: 992px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-content {
-        margin-bottom: 4rem;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 80px;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 80px);
-        background: rgba(15, 23, 42, 0.95);
-        flex-direction: column;
-        align-items: center;
-        padding-top: 4rem;
-        transition: right 0.4s ease;
-        backdrop-filter: blur(20px);
-    }
-    
-    .nav-links.active {
-        right: 0;
-    }
-    
-    .timeline::before {
-        left: 30px;
-    }
-    
-    .timeline-item {
-        width: 100%;
-        padding-left: 80px;
-        padding-right: 0;
-    }
-    
-    .timeline-item:nth-child(even) {
-        left: 0;
-    }
-    
-    .timeline-item::before {
-        left: 18px;
-    }
-
-    /* Mobile layout fixes */
-    .container {
-        padding: 0 1.5rem;
-    }
-    
-    .hero .container {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .hero-content {
-        margin-bottom: 3rem;
-        text-align: center;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-        text-align: center;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-        padding-left: 0;
-        text-align: center;
-    }
-    
-    .hero p::before {
-        display: none;
-    }
-    
-    .btn-group {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-    }
-    
-    .floating-card {
-        width: 100%;
-        max-width: 320px;
-        padding: 2rem;
-        margin: 0 auto;
-    }
-    
-    section {
-        padding: 80px 0;
-    }
-    
-    .section-title {
-        margin-bottom: 60px;
-        text-align: center;
-    }
-    
-    .section-title h2 {
-        font-size: 2.2rem;
-        text-align: center;
-    }
-    
-    .section-title p {
-        text-align: center;
-    }
-    
-    .about-content {
-        text-align: center;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .project-card {
-        margin: 0 auto;
-        max-width: 100%;
-        text-align: center;
-    }
-    
-    .resume-content {
-        padding: 2rem;
-    }
-    
-    .resume-actions {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .contact-container {
-        gap: 2rem;
-    }
-    
-    .modal-content {
-        width: 95%;
-        margin: 10% auto;
-        padding: 2rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .container {
-        padding: 0 1rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .floating-card {
-        width: 100%;
-        max-width: 300px;
-        padding: 1.5rem;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .section-title h2 {
-        font-size: 1.8rem;
-    }
-    
-    .profile-avatar {
-        width: 140px;
-        height: 140px;
-    }
-    
-    footer {
-        padding: 2rem 0;
-    }
-    
-    .footer-content {
-        gap: 1rem;
-    }
-    
-    .footer-links {
-        gap: 0.75rem;
-    }
-    
-    .footer-links a {
-        font-size: 0.9rem;
-    }
-}
-            
-            .footer-content .logo {
-                font-size: 1.5rem;
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .copyright {
-                font-size: 0.8rem;
+            .hero-content {
+                margin-bottom: 4rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 4rem;
+                transition: right 0.4s ease;
+                backdrop-filter: blur(20px);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::before {
+                left: 18px;
+            }
+
+            /* Mobile layout fixes */
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero .container {
+                flex-direction: column;
                 text-align: center;
-                padding: 0 1rem;
+                gap: 2rem;
+            }
+            
+            .hero-content {
+                margin-bottom: 3rem;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                padding-left: 0;
+                text-align: center;
+            }
+            
+            .hero p::before {
+                display: none;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .floating-card {
+                width: 100%;
+                max-width: 320px;
+                padding: 2rem;
+                margin: 0 auto;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 60px;
+                text-align: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+            
+            .section-title p {
+                text-align: center;
+            }
+            
+            .about-content {
+                text-align: center;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .project-card {
+                margin: 0 auto;
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .resume-content {
+                padding: 2rem;
+            }
+            
+            .resume-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .contact-container {
+                gap: 2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 2rem;
             }
         }
 
         @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -1454,23 +1471,10 @@
             
             .floating-card {
                 width: 100%;
-                max-width: 350px;
+                max-width: 300px;
+                padding: 1.5rem;
             }
             
-            .resume-content {
-                padding: 2rem;
-            }
-            
-            .contact-form {
-                padding: 2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            /* === ADDED SMALL MOBILE FIXES === */
-            /* Era small devices */
             .hero h1 {
                 font-size: 2rem;
             }
@@ -1479,16 +1483,11 @@
                 font-size: 1.8rem;
             }
             
-            .floating-card {
-                padding: 1.5rem;
-            }
-            
             .profile-avatar {
                 width: 140px;
                 height: 140px;
             }
-
-            /* === SMALL MOBILE FOOTER FIXES === */
+            
             footer {
                 padding: 2rem 0;
             }
@@ -1504,123 +1503,11 @@
             .footer-links a {
                 font-size: 0.9rem;
             }
-        }
-                /* === MOBILE FIXES - ADD THIS SECTION === */
-        @media (max-width: 768px) {
-            /* Fix hero section layout */
-            .hero .container {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
             
-            .hero-content {
-                margin-bottom: 3rem;
-            }
-            
-            /* Fix font sizes for mobile */
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-                padding-left: 0;
-            }
-            
-            .hero p::before {
-                display: none;
-            }
-            
-            /* Fix button layout */
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-            
-            /* Fix floating card size */
-            .floating-card {
-                width: 100%;
-                max-width: 320px;
+            .contact-form {
                 padding: 2rem;
             }
-            
-            /* Fix section padding */
-            section {
-                padding: 80px 0;
-            }
-            
-            .section-title {
-                margin-bottom: 60px;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            /* Fix project cards */
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .project-card {
-                margin: 0 auto;
-                max-width: 100%;
-            }
-            
-            /* Fix modal for mobile */
-            .modal-content {
-                width: 95%;
-                margin: 10% auto;
-                padding: 2rem;
-            }
-            
-            /* Fix contact section */
-            .contact-container {
-                gap: 2rem;
-            }
-            
-            .contact-item {
-                padding: 1.5rem;
-            }
-            
-            /* Fix resume section */
-            .resume-content {
-                padding: 2rem;
-            }
-            
-            .resume-actions {
-                flex-direction: column;
-            }
         }
-
-        @media (max-width: 480px) {
-            /* Extra small devices */
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .floating-card {
-                padding: 1.5rem;
-            }
-            
-            .profile-avatar {
-                width: 140px;
-                height: 140px;
-            }
-        }
-        /* === END MOBILE FIXES === */
     </style>
 </head>
 <body>
@@ -1921,6 +1808,7 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <div class="section-title">
@@ -1929,7 +1817,6 @@
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    
                     <a href="tel:+918187879679" style="text-decoration: none; color: inherit;">
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-phone"></i></div>
@@ -1991,30 +1878,45 @@
                     </div>
                 </div>
                 
-               <div class="contact-form">
-    <form action="https://formspree.io/f/scorridso" method="POST" id="contactForm">
-        <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" class="form-control" required>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required placeholder="Enter message subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" required placeholder="Type your message here..." rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <!-- Success/Error Messages -->
+                        <div id="successMessage" class="form-message success-message" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Message Sent Successfully!</h4>
+                            <p>Thank you for contacting me. I'll get back to you soon.</p>
+                        </div>
+                        
+                        <div id="errorMessage" class="form-message error-message" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h4>Something Went Wrong</h4>
+                            <p>Please try again or contact me directly at jeshwanthvarma8@gmail.com</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" class="form-control" required></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-                </form>
-             </div>
-         </div>
-     </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -2052,44 +1954,307 @@
     </div>
 
     <script>
-        // Enhanced JavaScript with smooth animations
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
+        // Initialize EmailJS with your credentials
+        (function() {
+            emailjs.init("oSx-GRG1Oi35xR2CzxXX9");
+        })();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Hide messages initially
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Show loading state
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value,
+                    date: new Date().toLocaleString(),
+                    phone: "Not provided", // You can add a phone field if needed
+                    page: "Jeshwanth Varma Portfolio"
+                };
+
+                // Send email using EmailJS
+                emailjs.send('service_bl94rpf', 'template_0sfuqtp', formData)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    })
+                    .catch(function(error) {
+                        console.log('FAILED...', error);
+                        
+                        // Show error message
+                        errorMessage.style.display = 'block';
+                        successMessage.style.display = 'none';
+                        
+                        // Scroll to error message
+                        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    })
+                    .finally(function() {
+                        // Reset button state
+                        submitBtn.classList.remove('loading');
+                        submitBtn.disabled = false;
+                        
+                        // Hide messages after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                            errorMessage.style.display = 'none';
+                        }, 5000);
+                    });
+            });
+
+            // Your existing JavaScript code continues...
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                const scrollTopBtn = document.querySelector('.scroll-to-top');
+                
+                if (window.scrollY > 50) {
+                    header.classList.add('nav-scrolled');
+                } else {
+                    header.classList.remove('nav-scrolled');
+                }
+                
+                if (window.scrollY > 500) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+                
+                // Update active nav link
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Enhanced timeline animation
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                timelineItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (itemTop < windowHeight * 0.8) {
+                        item.classList.add('visible');
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Project Details Modal
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            const projectModal = document.getElementById('projectModal');
+            const modalBody = document.getElementById('modal-body');
+            const closeModal = document.querySelector('.close-modal');
+
+            // Project details data
+            const projectDetails = {
+                'movie-master': {
+                    title: 'The Movie Master: A Cloud-Based Search Engine',
+                    description: 'A sophisticated cloud-enabled movie search engine fortified with sentiment analysis capabilities, revolutionizing the cinematic exploration experience. This BCA project provides personalized cinematic journeys by searching for movies based on title, genre, or actor using robust cloud infrastructure.',
+                    technologies: ['AWS', 'MongoDB', 'IMDb API', 'React', 'Node.js', 'Cloud Infrastructure', 'RDBMS', 'NLP'],
+                    features: [
+                        'Cloud-based search module with scalable infrastructure',
+                        'Sentiment analysis of user reviews using NLP models',
+                        'Personalized movie recommendations',
+                        'Real-time movie data processing',
+                        'User-friendly interface with movie posters and ratings',
+                        'Comprehensive movie information (actors, directors, genres)'
+                    ],
+                    achievements: [
+                        'BCA Project at Koneru Lakshmaiah University',
+                        'Successfully deployed on AWS cloud infrastructure',
+                        'Integrated real-time movie data from multiple sources',
+                        'Implemented sentiment analysis for user reviews'
+                    ],
+                    github: 'https://github.com/jeshwanthvarma/THE-MOVIE-MASTER',
+                    liveDemo: '#',
+                    document: 'About the movie master.pdf'
+                },
+                'twitter-analysis': {
+                    title: 'Twitter Intent Analysis System',
+                    description: 'A deep learning-powered system designed to automatically categorize tweets based on user intent. This project addresses the challenge of understanding underlying intent behind user tweets using Natural Language Processing and Recurrent Neural Networks.',
+                    technologies: ['AWS', 'Twitter API', 'Machine Learning', 'Deep Learning', 'Python', 'RNN', 'NLP', 'TensorFlow'],
+                    features: [
+                        'Deep learning model for tweet classification',
+                        'Natural Language Processing for feature extraction',
+                        'Recurrent Neural Networks (RNNs) implementation',
+                        'Real-time Twitter data processing',
+                        'User intent categorization and sentiment analysis',
+                        'Crisis management and trend identification capabilities'
+                    ],
+                    achievements: [
+                        'Accurate classification of user intents from tweets',
+                        'Implemented tokenization and stemming/lemmatization',
+                        'Domain-specific analysis with industry jargon understanding',
+                        'High precision, recall, and F1 score performance'
+                    ],
+                    github: '',
+                    liveDemo: '',
+                    document: 'About Twitter Intent Analysis.pdf'
+                }
+            };
+
+            // Open modal when View Details is clicked
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectId = this.getAttribute('data-project');
+                    showProjectDetails(projectId);
+                });
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                projectModal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === projectModal) {
+                    projectModal.style.display = 'none';
+                }
+            });
+
+            function showProjectDetails(projectId) {
+                const project = projectDetails[projectId];
+                
+                // Generate buttons based on project
+                let buttonsHTML = '';
+                
+                if (projectId === 'movie-master') {
+                    buttonsHTML = `
+                        <a href="${project.github}" class="btn" target="_blank">
+                            <i class="fab fa-github"></i> GitHub Code
+                        </a>
+                        <a href="${project.document}" class="btn btn-outline" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Project PDF
+                        </a>
+                    `;
+                } else if (projectId === 'twitter-analysis') {
+                    buttonsHTML = `
+                        <a href="${project.document}" class="btn" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Download Project PDF
+                        </a>
+                    `;
+                }
+                
+                modalBody.innerHTML = `
+                    <div class="project-modal-content">
+                        <h2>${project.title}</h2>
+                        <p class="project-description">${project.description}</p>
+                        
+                        <div class="project-details-section">
+                            <h3>🛠️ Technologies Used</h3>
+                            <div class="project-tech">
+                                ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="project-details-section">
+                            <h3>⭐ Key Features</h3>
+                            <ul class="features-list">
+                                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="project-details-section">
+                            <h3>🏆 Achievements</h3>
+                            <ul class="achievements-list">
+                                ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="project-links">
+                            ${buttonsHTML}
+                        </div>
+                    </div>
+                `;
+                
+                projectModal.style.display = 'block';
+            }
+
+            // Enhanced smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll to top functionality
             const scrollTopBtn = document.querySelector('.scroll-to-top');
-            
-            if (window.scrollY > 50) {
-                header.classList.add('nav-scrolled');
-            } else {
-                header.classList.remove('nav-scrolled');
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
             }
-            
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
-            }
-            
-            // Update active nav link
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Enhanced timeline animation
+
+            // Initialize animations
             const timelineItems = document.querySelectorAll('.timeline-item');
             timelineItems.forEach(item => {
                 const itemTop = item.getBoundingClientRect().top;
@@ -2099,226 +2264,25 @@
                     item.classList.add('visible');
                 }
             });
-        });
 
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+            // Add loading animation
+            window.addEventListener('load', function() {
+                document.body.classList.add('loaded');
             });
-        });
-
-        // Form submission - REPLACE THIS PART
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
-});
-
-        // Project Details Modal
-        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
-        const projectModal = document.getElementById('projectModal');
-        const modalBody = document.getElementById('modal-body');
-        const closeModal = document.querySelector('.close-modal');
-
-        // Project details data
-        // Project details data
-const projectDetails = {
-    'movie-master': {
-        title: 'The Movie Master: A Cloud-Based Search Engine',
-        description: 'A sophisticated cloud-enabled movie search engine fortified with sentiment analysis capabilities, revolutionizing the cinematic exploration experience. This BCA project provides personalized cinematic journeys by searching for movies based on title, genre, or actor using robust cloud infrastructure.',
-        technologies: ['AWS', 'MongoDB', 'IMDb API', 'React', 'Node.js', 'Cloud Infrastructure', 'RDBMS', 'NLP'],
-        features: [
-            'Cloud-based search module with scalable infrastructure',
-            'Sentiment analysis of user reviews using NLP models',
-            'Personalized movie recommendations',
-            'Real-time movie data processing',
-            'User-friendly interface with movie posters and ratings',
-            'Comprehensive movie information (actors, directors, genres)'
-        ],
-        achievements: [
-            'BCA Project at Koneru Lakshmaiah University',
-            'Successfully deployed on AWS cloud infrastructure',
-            'Integrated real-time movie data from multiple sources',
-            'Implemented sentiment analysis for user reviews'
-        ],
-        github: 'https://github.com/jeshwanthvarma/THE-MOVIE-MASTER',
-        liveDemo: '#',
-        document: 'About the movie master.pdf'
-    },
-    'twitter-analysis': {
-        title: 'Twitter Intent Analysis System',
-        description: 'A deep learning-powered system designed to automatically categorize tweets based on user intent. This project addresses the challenge of understanding underlying intent behind user tweets using Natural Language Processing and Recurrent Neural Networks.',
-        technologies: ['AWS', 'Twitter API', 'Machine Learning', 'Deep Learning', 'Python', 'RNN', 'NLP', 'TensorFlow'],
-        features: [
-            'Deep learning model for tweet classification',
-            'Natural Language Processing for feature extraction',
-            'Recurrent Neural Networks (RNNs) implementation',
-            'Real-time Twitter data processing',
-            'User intent categorization and sentiment analysis',
-            'Crisis management and trend identification capabilities'
-        ],
-        achievements: [
-            'Accurate classification of user intents from tweets',
-            'Implemented tokenization and stemming/lemmatization',
-            'Domain-specific analysis with industry jargon understanding',
-            'High precision, recall, and F1 score performance'
-        ],
-        github: '',
-        liveDemo: '',
-        document: 'About Twitter Intent Analysis.pdf'
-    }
-};
-
-        // Open modal when View Details is clicked
-        viewDetailsBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const projectId = this.getAttribute('data-project');
-                showProjectDetails(projectId);
-            });
-        });
-
-        // Close modal
-        closeModal.addEventListener('click', function() {
-            projectModal.style.display = 'none';
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            if (e.target === projectModal) {
-                projectModal.style.display = 'none';
-            }
-        });
-
-        function showProjectDetails(projectId) {
-    const project = projectDetails[projectId];
-    
-    // Generate buttons based on project
-    let buttonsHTML = '';
-    
-    if (projectId === 'movie-master') {
-        buttonsHTML = `
-            <a href="${project.github}" class="btn" target="_blank">
-                <i class="fab fa-github"></i> GitHub Code
-            </a>
-            <a href="${project.document}" class="btn btn-outline" target="_blank">
-                <i class="fas fa-file-pdf"></i> Project PDF
-            </a>
-        `;
-    } else if (projectId === 'twitter-analysis') {
-        buttonsHTML = `
-            <a href="${project.document}" class="btn" target="_blank">
-                <i class="fas fa-file-pdf"></i> Download Project PDF
-            </a>
-        `;
-    }
-    
-    modalBody.innerHTML = `
-        <div class="project-modal-content">
-            <h2>${project.title}</h2>
-            <p class="project-description">${project.description}</p>
             
-            <div class="project-details-section">
-                <h3>🛠️ Technologies Used</h3>
-                <div class="project-tech">
-                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                </div>
-            </div>
-            
-            <div class="project-details-section">
-                <h3>⭐ Key Features</h3>
-                <ul class="features-list">
-                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div class="project-details-section">
-                <h3>🏆 Achievements</h3>
-                <ul class="achievements-list">
-                    ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div class="project-links">
-                ${buttonsHTML}
-            </div>
-        </div>
-    `;
-    
-    projectModal.style.display = 'block';
-}
-
-        // Enhanced smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Scroll to top functionality - FIXED
-        const scrollTopBtn = document.querySelector('.scroll-to-top');
-        if (scrollTopBtn) {
-            scrollTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            // Mobile performance optimization
+            if (window.innerWidth < 768) {
+                // Optimize images for mobile
+                document.querySelectorAll('img').forEach(img => {
+                    img.loading = 'lazy';
                 });
-            });
-        }
-
-        // Initialize animations
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        timelineItems.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (itemTop < windowHeight * 0.8) {
-                item.classList.add('visible');
+                
+                // Improve text rendering
+                document.body.style.fontKerning = 'normal';
+                document.body.style.webkitFontSmoothing = 'antialiased';
+                document.body.style.mozOsxFontSmoothing = 'grayscale';
             }
         });
-
-        // Add loading animation
-        window.addEventListener('load', function() {
-            document.body.classList.add('loaded');
-        });
-        
-        // Mobile performance optimization
-        if (window.innerWidth < 768) {
-            // Optimize images for mobile
-            document.querySelectorAll('img').forEach(img => {
-                img.loading = 'lazy';
-            });
-            
-            // Improve text rendering
-            document.body.style.fontKerning = 'normal';
-            document.body.style.webkitFontSmoothing = 'antialiased';
-            document.body.style.mozOsxFontSmoothing = 'grayscale';
-        }
     </script>
-    
 </body>
 </html>
