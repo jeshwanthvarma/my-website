@@ -1992,7 +1992,10 @@
                 </div>
                 
                <div class="contact-form">
-    <form action="https://formspree.io/f/scorridso" method="POST" id="contactForm">
+        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+        <input type="hidden" name="access_key" value="164339d7-daee-4082-9ae2-6a862a34894e">
+        <input type="hidden" name="from_name" value="Jeshwanth Varma Portfolio">
+    
 
         <div class="form-group">
             <label for="name">Your Name</label>
@@ -2121,6 +2124,8 @@
         });
 
         // Form submission - REPLACE THIS PART
+
+const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', function() {
     setTimeout(() => {
