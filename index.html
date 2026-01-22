@@ -1,14 +1,29 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <title>Jeshwanth Varma M V | Cloud Engineer</title>
     <meta name="description" content="Cloud Engineer specializing in AWS, Kubernetes, and DevOps practices. BCA graduate with Cloud Computing specialization, currently pursuing MCA in Cybersecurity.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☁️</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
     <style>
+        /* ========== CRITICAL FIXES FIRST ========== */
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #3B82F6;
             --primary-dark: #2563EB;
@@ -55,12 +70,6 @@
             --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #f8fafc 50%, #e2e8f0 100%);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         html {
             scroll-behavior: smooth;
         }
@@ -73,6 +82,14 @@
             overflow-x: hidden;
             min-height: 100vh;
             transition: all 0.3s ease;
+        }
+
+        /* Chrome specific fix for zoom */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            body {
+                zoom: 1;
+                -webkit-text-size-adjust: 100%;
+            }
         }
 
         /* FIXED: Theme Toggle Button */
@@ -384,6 +401,7 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
+            box-sizing: border-box;
         }
 
         .hero-content {
@@ -641,6 +659,8 @@
         section {
             padding: 100px 0;
             position: relative;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .section-title {
@@ -706,6 +726,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Enhanced About Section */
@@ -2616,7 +2638,7 @@
                         <a href="https://github.com/jeshwanthvarma" target="_blank" class="social-link" title="GitHub" aria-label="GitHub profile">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="mailto:jeshwanthvarma8@gmail.com" class="social-link" title="Email" aria-label="Send email">
+                        <a href="#" class="social-link email-handler" title="Email" aria-label="Send email" data-email="jeshwanthvarma8@gmail.com">
                             <i class="far fa-envelope"></i>
                         </a>
                         <a href="tel:+918187879679" class="social-link" title="Phone" aria-label="Call phone number">
@@ -2946,19 +2968,17 @@
                         </a>
                     </div>
                     
-                    <!-- Email - WORKING LINK (opens in browser) -->
-<div class="contact-item" tabindex="0">
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jeshwanthvarma8@gmail.com&su=Contact%20from%20Portfolio&body=Hello%20Jeshwanth,%20I%20saw%20your%20portfolio..." 
-       target="_blank" 
-       style="display: flex; align-items: center; gap: 1.2rem; width: 100%; text-decoration: none; color: inherit;">
-        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-        <div class="contact-text">
-            <h4>Email Me</h4>
-            <p>jeshwanthvarma8@gmail.com</p>
-            <small style="color: var(--primary); font-size: 0.8rem;">Click to email in browser</small>
-        </div>
-    </a>
-</div>
+                    <!-- Email - SMART LINK (opens browser on desktop, app on mobile) -->
+                    <div class="contact-item" tabindex="0">
+                        <a href="#" class="email-handler" data-email="jeshwanthvarma8@gmail.com" style="display: flex; align-items: center; gap: 1.2rem; width: 100%; text-decoration: none; color: inherit;">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <h4>Email Me</h4>
+                                <p>jeshwanthvarma8@gmail.com</p>
+                                <small style="color: var(--primary); font-size: 0.8rem;">Click to email</small>
+                            </div>
+                        </a>
+                    </div>
 
                     <!-- LinkedIn - WORKING LINK -->
                     <div class="contact-item" tabindex="0">
@@ -2967,7 +2987,7 @@
                             <div class="contact-text">
                                 <h4>LinkedIn Profile</h4>
                                 <p>Connect with me professionally</p>
-                                <small style="color: var(--primary); font-size: 0.8rem;">Tap to open</small>
+                                <small style="color: var(--primary); font-size: 0.8rem;">Click to open</small>
                             </div>
                         </a>
                     </div>
@@ -2979,7 +2999,7 @@
                             <div class="contact-text">
                                 <h4>GitHub Portfolio</h4>
                                 <p>View my code repositories</p>
-                                <small style="color: var(--primary); font-size: 0.8rem;">Tap to open</small>
+                                <small style="color: var(--primary); font-size: 0.8rem;">Click to open</small>
                             </div>
                         </a>
                     </div>
@@ -3006,7 +3026,7 @@
                             <div class="contact-text">
                                 <h4>Website</h4>
                                 <p>jeshwanthvarma.kesug.com</p>
-                                <small style="color: var(--primary); font-size: 0.8rem;">Tap to visit</small>
+                                <small style="color: var(--primary); font-size: 0.8rem;">Click to visit</small>
                             </div>
                         </a>
                     </div>
@@ -3091,249 +3111,277 @@
     </button>
 
     <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        body.setAttribute('data-theme', savedTheme);
-        themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        // ========== EMAIL HANDLER ==========
+        // Smart email handler: desktop = browser, mobile = mail app
+        function handleEmailClick(email) {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            body.setAttribute('data-theme', newTheme);
-            themeIcon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            
-            themeIcon.style.transform = 'rotate(360deg)';
-            setTimeout(() => {
-                themeIcon.style.transform = 'rotate(0deg)';
-            }, 300);
-            
-            localStorage.setItem('theme', newTheme);
-        });
-
-        // Improved Contact Form JavaScript
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const formStatus = document.getElementById('formStatus');
-        
-        // Initialize form validation
-        initFormValidation();
-        
-        function initFormValidation() {
-            // Add input event listeners for real-time validation
-            const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
-            
-            inputs.forEach(input => {
-                input.addEventListener('blur', validateField);
-                input.addEventListener('input', clearFieldError);
-            });
-            
-            // Improve form submission
-            contactForm.addEventListener('submit', handleFormSubmit);
-        }
-        
-        function validateField(e) {
-            const field = e.target;
-            const value = field.value.trim();
-            const errorElement = document.getElementById(field.id + 'Error');
-            
-            // Clear previous states
-            field.classList.remove('error', 'success');
-            if (errorElement) errorElement.classList.remove('show');
-            
-            // Validate based on field type
-            let isValid = true;
-            
-            switch(field.id) {
-                case 'name':
-                    isValid = value.length >= 2;
-                    break;
-                case 'email':
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    isValid = emailRegex.test(value);
-                    break;
-                case 'subject':
-                    isValid = value.length >= 3;
-                    break;
-                case 'message':
-                    isValid = value.length >= 10;
-                    break;
-            }
-            
-            // Update field state
-            if (!isValid && value !== '') {
-                field.classList.add('error');
-                if (errorElement) errorElement.classList.add('show');
-            } else if (value !== '') {
-                field.classList.add('success');
-            }
-            
-            return isValid;
-        }
-        
-        function clearFieldError(e) {
-            const field = e.target;
-            const errorElement = document.getElementById(field.id + 'Error');
-            
-            field.classList.remove('error');
-            if (errorElement) errorElement.classList.remove('show');
-            
-            // Clear form status when user starts typing
-            if (formStatus.textContent) {
-                formStatus.textContent = '';
-                formStatus.className = 'form-status';
+            if (isMobile) {
+                // On mobile: open mail app
+                window.location.href = `mailto:${email}?subject=Contact from Portfolio&body=Hello Jeshwanth,%0A%0AI saw your portfolio and would like to connect with you.%0A%0ABest regards,%0A`;
+            } else {
+                // On desktop: open Gmail in browser
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent('Contact from Portfolio')}&body=${encodeURIComponent('Hello Jeshwanth,\n\nI saw your portfolio and would like to connect with you.\n\nBest regards,\n\n')}`;
+                window.open(gmailUrl, '_blank');
             }
         }
-        
-        function validateForm() {
-            const fields = contactForm.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
+
+        // ========== PHONE HANDLER ==========
+        // Smart phone handler: desktop = show number, mobile = call
+        function handlePhoneClick(phone) {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            fields.forEach(field => {
-                const event = new Event('blur', { bubbles: true });
-                field.dispatchEvent(event);
-                
-                if (field.classList.contains('error')) {
-                    isValid = false;
+            if (isMobile) {
+                // On mobile: call directly
+                window.location.href = `tel:${phone}`;
+            } else {
+                // On desktop: show number with copy option
+                if (confirm(`Phone: ${phone}\n\nCopy to clipboard?`)) {
+                    navigator.clipboard.writeText(phone.replace('+', '')).then(() => {
+                        alert('Phone number copied to clipboard!');
+                    }).catch(() => {
+                        alert(`Phone number: ${phone}\n\nYou can copy it manually.`);
+                    });
                 }
-            });
-            
-            return isValid;
-        }
-        
-        async function handleFormSubmit(e) {
-            e.preventDefault();
-            
-            // Validate form
-            if (!validateForm()) {
-                showFormStatus('Please fix the errors in the form before submitting.', 'error');
-                // Scroll to first error
-                const firstError = contactForm.querySelector('.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    firstError.focus();
-                }
-                return;
             }
-            
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.classList.add('btn-loading');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            try {
-                // Prepare form data
-                const formData = new FormData(contactForm);
-                formData.append('honeypot', ''); // Anti-spam field
+        }
+
+        // ========== INITIALIZE ALL FUNCTIONALITY ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Email handlers (both in contact section and floating card)
+            document.querySelectorAll('.email-handler').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const email = this.getAttribute('data-email') || 'jeshwanthvarma8@gmail.com';
+                    handleEmailClick(email);
+                });
+            });
+
+            // Phone handlers
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const phone = this.href.replace('tel:', '');
+                    handlePhoneClick(phone);
+                });
+            });
+
+            // ========== EXISTING FUNCTIONALITY ==========
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const body = document.body;
+
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            body.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 
-                // Send to Web3Forms
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
+                body.setAttribute('data-theme', newTheme);
+                themeIcon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                
+                themeIcon.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    themeIcon.style.transform = 'rotate(0deg)';
+                }, 300);
+                
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // Improved Contact Form JavaScript
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+            
+            // Initialize form validation
+            initFormValidation();
+            
+            function initFormValidation() {
+                const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('blur', validateField);
+                    input.addEventListener('input', clearFieldError);
                 });
                 
-                if (response.ok) {
-                    // Show success popup
-                    showSuccessPopup();
+                contactForm.addEventListener('submit', handleFormSubmit);
+            }
+            
+            function validateField(e) {
+                const field = e.target;
+                const value = field.value.trim();
+                const errorElement = document.getElementById(field.id + 'Error');
+                
+                field.classList.remove('error', 'success');
+                if (errorElement) errorElement.classList.remove('show');
+                
+                let isValid = true;
+                
+                switch(field.id) {
+                    case 'name':
+                        isValid = value.length >= 2;
+                        break;
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        isValid = emailRegex.test(value);
+                        break;
+                    case 'subject':
+                        isValid = value.length >= 3;
+                        break;
+                    case 'message':
+                        isValid = value.length >= 10;
+                        break;
+                }
+                
+                if (!isValid && value !== '') {
+                    field.classList.add('error');
+                    if (errorElement) errorElement.classList.add('show');
+                } else if (value !== '') {
+                    field.classList.add('success');
+                }
+                
+                return isValid;
+            }
+            
+            function clearFieldError(e) {
+                const field = e.target;
+                const errorElement = document.getElementById(field.id + 'Error');
+                
+                field.classList.remove('error');
+                if (errorElement) errorElement.classList.remove('show');
+                
+                if (formStatus.textContent) {
+                    formStatus.textContent = '';
+                    formStatus.className = 'form-status';
+                }
+            }
+            
+            function validateForm() {
+                const fields = contactForm.querySelectorAll('input[required], textarea[required]');
+                let isValid = true;
+                
+                fields.forEach(field => {
+                    const event = new Event('blur', { bubbles: true });
+                    field.dispatchEvent(event);
                     
-                    // Reset form
-                    contactForm.reset();
+                    if (field.classList.contains('error')) {
+                        isValid = false;
+                    }
+                });
+                
+                return isValid;
+            }
+            
+            async function handleFormSubmit(e) {
+                e.preventDefault();
+                
+                if (!validateForm()) {
+                    showFormStatus('Please fix the errors in the form before submitting.', 'error');
+                    const firstError = contactForm.querySelector('.error');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstError.focus();
+                    }
+                    return;
+                }
+                
+                submitBtn.disabled = true;
+                submitBtn.classList.add('btn-loading');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                
+                try {
+                    const formData = new FormData(contactForm);
+                    formData.append('honeypot', '');
                     
-                    // Clear field states
-                    const fields = contactForm.querySelectorAll('.form-control');
-                    fields.forEach(field => {
-                        field.classList.remove('success', 'error');
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
                     });
                     
-                    // Clear error messages
-                    const errorMessages = contactForm.querySelectorAll('.error-message');
-                    errorMessages.forEach(msg => msg.classList.remove('show'));
-                    
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                console.error('Form submission error:', error);
-                showFormStatus('Sorry, there was an error sending your message. Please try again later.', 'error');
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('btn-loading');
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-            }
-        }
-        
-        function showFormStatus(message, type) {
-            formStatus.textContent = message;
-            formStatus.className = `form-status ${type}`;
-            formStatus.setAttribute('role', 'alert');
-            formStatus.style.display = 'block';
-            
-            // Scroll to status message
-            formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        
-        function showSuccessPopup() {
-            const successPopup = document.getElementById('successPopup');
-            const popupOverlay = document.getElementById('popupOverlay');
-            
-            successPopup.classList.add('active');
-            popupOverlay.classList.add('active');
-            
-            // Focus on the popup for accessibility
-            successPopup.setAttribute('tabindex', '-1');
-            successPopup.focus();
-            
-            // Auto-close after 5 seconds
-            setTimeout(() => {
-                if (successPopup.classList.contains('active')) {
-                    closeSuccessPopup();
-                }
-            }, 5000);
-        }
-        
-        function closeSuccessPopup() {
-            const successPopup = document.getElementById('successPopup');
-            const popupOverlay = document.getElementById('popupOverlay');
-            
-            successPopup.classList.remove('active');
-            popupOverlay.classList.remove('active');
-        }
-        
-        // Close popup handlers
-        document.getElementById('closePopup').addEventListener('click', closeSuccessPopup);
-        document.getElementById('popupOverlay').addEventListener('click', closeSuccessPopup);
-        
-        // Improve mobile navigation to contact section
-        const contactLinks = document.querySelectorAll('a[href="#contact"]');
-        contactLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Close mobile menu if open
-                const navLinks = document.getElementById('navLinks');
-                const hamburger = document.getElementById('hamburger');
-                
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                }
-                
-                // Smooth scroll to contact section
-                setTimeout(() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    if (response.ok) {
+                        showSuccessPopup();
+                        contactForm.reset();
+                        const fields = contactForm.querySelectorAll('.form-control');
+                        fields.forEach(field => {
+                            field.classList.remove('success', 'error');
+                        });
+                        const errorMessages = contactForm.querySelectorAll('.error-message');
+                        errorMessages.forEach(msg => msg.classList.remove('show'));
+                        
+                    } else {
+                        throw new Error('Form submission failed');
                     }
-                }, 100);
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showFormStatus('Sorry, there was an error sending your message. Please try again later.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                }
+            }
+            
+            function showFormStatus(message, type) {
+                formStatus.textContent = message;
+                formStatus.className = `form-status ${type}`;
+                formStatus.setAttribute('role', 'alert');
+                formStatus.style.display = 'block';
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            function showSuccessPopup() {
+                const successPopup = document.getElementById('successPopup');
+                const popupOverlay = document.getElementById('popupOverlay');
+                
+                successPopup.classList.add('active');
+                popupOverlay.classList.add('active');
+                successPopup.setAttribute('tabindex', '-1');
+                successPopup.focus();
+                
+                setTimeout(() => {
+                    if (successPopup.classList.contains('active')) {
+                        closeSuccessPopup();
+                    }
+                }, 5000);
+            }
+            
+            function closeSuccessPopup() {
+                const successPopup = document.getElementById('successPopup');
+                const popupOverlay = document.getElementById('popupOverlay');
+                
+                successPopup.classList.remove('active');
+                popupOverlay.classList.remove('active');
+            }
+            
+            // Close popup handlers
+            document.getElementById('closePopup').addEventListener('click', closeSuccessPopup);
+            document.getElementById('popupOverlay').addEventListener('click', closeSuccessPopup);
+            
+            // Improve mobile navigation to contact section
+            const contactLinks = document.querySelectorAll('a[href="#contact"]');
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const navLinks = document.getElementById('navLinks');
+                    const hamburger = document.getElementById('hamburger');
+                    
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    }
+                    
+                    setTimeout(() => {
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 100);
+                });
             });
-        });
 
-        // All other existing JavaScript remains the same...
-        window.addEventListener('DOMContentLoaded', function() {
+            // All other existing JavaScript
             const header = document.getElementById('header');
             const scrollTopBtn = document.querySelector('.scroll-to-top');
             
@@ -3432,7 +3480,6 @@
                 
                 downloadSuccess.classList.add('active');
                 downloadOverlay.classList.add('active');
-                
                 downloadSuccess.setAttribute('tabindex', '-1');
                 downloadSuccess.focus();
                 
@@ -3653,7 +3700,6 @@
                 
                 if (removeTrapFocus) removeTrapFocus();
                 removeTrapFocus = trapFocus(projectModal);
-                
                 closeModal.focus();
                 
                 const modalContent = document.querySelector('.project-modal-content');
@@ -3700,7 +3746,6 @@
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
-                        
                         history.replaceState(null, null, targetId);
                     }
                 });
@@ -3807,7 +3852,6 @@
             
             // Improve touch interactions for mobile
             if ('ontouchstart' in window) {
-                // Add touch feedback for buttons
                 const touchElements = document.querySelectorAll('.btn, .tech-tag, .contact-item, .resume-skill-card-horizontal');
                 touchElements.forEach(el => {
                     el.addEventListener('touchstart', function() {
@@ -3823,6 +3867,14 @@
                     });
                 });
             }
+
+            // Fix zoom issues
+            document.body.style.zoom = "1";
+            document.addEventListener('wheel', function(e) {
+                if (e.ctrlKey) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
         });
     </script>
 </body>
