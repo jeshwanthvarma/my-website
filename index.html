@@ -128,10 +128,10 @@
             transform: rotate(30deg);
         }
 
-        /* FIXED: Scroll to Top Button */
+        /* FIXED: Scroll to Top Button - REDUCED GAP */
         .scroll-to-top {
             position: fixed;
-            bottom: 7rem;
+            bottom: 5.5rem; /* CHANGED: Reduced from 7rem to 5.5rem */
             right: 2rem;
             width: 55px;
             height: 55px;
@@ -1965,6 +1965,59 @@
         /* ========== MOBILE VIEW FIXES ========== */
         /* Mobile (768px and below) */
         @media (max-width: 768px) {
+            /* Performance Optimizations */
+            .gradient-orbs,
+            .floating-card,
+            .btn::before,
+            .project-img::before,
+            .skill-card::before,
+            .scroll-hint,
+            .download-icon,
+            .success-icon {
+                animation: none !important;
+            }
+            
+            /* Reduce heavy effects on mobile */
+            .hero h1,
+            .section-title h2,
+            .about-text h3,
+            .timeline-content h3,
+            .project-content h3,
+            .resume-section h3,
+            .project-modal-content h2,
+            .download-success h2,
+            .success-popup h2,
+            .footer-content .logo,
+            .skills h3,
+            .resume-header h2 {
+                animation: simpleGradient 8s ease infinite !important;
+            }
+            
+            /* Simple gradient animation for mobile */
+            @keyframes simpleGradient {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+            }
+            
+            /* Remove expensive backdrop filters on mobile */
+            header {
+                backdrop-filter: blur(10px);
+            }
+            
+            .floating-card {
+                backdrop-filter: blur(10px);
+            }
+            
+            /* Optimize transitions */
+            .btn,
+            .skill-card,
+            .timeline-content,
+            .project-card,
+            .resume-skill-card,
+            .contact-item {
+                transition: transform 0.2s ease, opacity 0.2s ease;
+            }
+            
             /* FIXED: Header - Smaller on Mobile */
             header {
                 padding: 0.3rem 0;
@@ -2019,8 +2072,6 @@
                 word-break: keep-all;
                 line-height: 1.1;
                 margin-bottom: 1rem;
-                /* CHANGED: Slightly slower animation on mobile for performance */
-                animation: fastGradientShift 6s ease infinite, gradientPulse 8s ease-in-out infinite;
             }
             
             .hero-content {
@@ -2077,8 +2128,6 @@
             .section-title h2 {
                 font-size: 1.8rem !important;
                 line-height: 1.2;
-                /* CHANGED: Slightly slower animation on mobile */
-                animation: fastGradientShift 6s ease infinite;
             }
             
             .section-title p {
@@ -2294,7 +2343,7 @@
                 padding: 1.5rem !important;
             }
             
-            /* Button positioning fixes */
+            /* FIXED: Button positioning with REDUCED GAP on mobile */
             .theme-toggle,
             .scroll-to-top {
                 width: 50px;
@@ -2307,8 +2356,14 @@
             }
             
             .scroll-to-top {
-                bottom: 6.5rem;
+                bottom: 4.5rem; /* CHANGED: Reduced from 6.5rem to 4.5rem */
                 right: 1.5rem;
+            }
+            
+            /* Reduce shadow effects on mobile */
+            .theme-toggle,
+            .scroll-to-top {
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
             }
         }
 
@@ -2318,7 +2373,6 @@
             .hero h1 {
                 font-size: 1.8rem !important;
                 line-height: 1.1;
-                animation: fastGradientShift 7s ease infinite, gradientPulse 9s ease-in-out infinite;
             }
             
             /* Further container padding reduction */
@@ -2340,7 +2394,6 @@
             /* Smaller section titles */
             .section-title h2 {
                 font-size: 1.6rem !important;
-                animation: fastGradientShift 7s ease infinite;
             }
             
             /* Resume Mobile Skills */
@@ -2393,7 +2446,7 @@
             }
             
             .scroll-to-top {
-                bottom: 6.2rem;
+                bottom: 4.2rem; /* CHANGED: Reduced from 6.2rem to 4.2rem */
                 right: 1.2rem;
             }
         }
@@ -3237,6 +3290,17 @@
 
         // ========== INITIALIZE ALL FUNCTIONALITY ==========
         document.addEventListener('DOMContentLoaded', function() {
+            // Optimize performance - throttle scroll events
+            let scrollTimeout;
+            function throttleScroll(callback, delay) {
+                if (!scrollTimeout) {
+                    scrollTimeout = setTimeout(function() {
+                        callback();
+                        scrollTimeout = null;
+                    }, delay);
+                }
+            }
+
             // Email handlers (both in contact section and floating card)
             document.querySelectorAll('.email-handler').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -3294,7 +3358,8 @@
             skillCards.forEach(card => {
                 let touchTimer;
                 
-                card.addEventListener('touchstart', function() {
+                card.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
                     touchTimer = setTimeout(() => {
                         this.classList.add('hover');
                     }, 500); // Long press for hover effect
@@ -3584,46 +3649,48 @@
             const scrollTopBtn = document.querySelector('.scroll-to-top');
             
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('nav-scrolled');
-                } else {
-                    header.classList.remove('nav-scrolled');
-                }
-                
-                if (window.scrollY > 300) {
-                    scrollTopBtn.classList.add('active');
-                } else {
-                    scrollTopBtn.classList.remove('active');
-                }
-                
-                const sections = document.querySelectorAll('section');
-                const navLinks = document.querySelectorAll('.nav-links a');
-                
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
+                throttleScroll(() => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('nav-scrolled');
+                    } else {
+                        header.classList.remove('nav-scrolled');
                     }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
-                    }
-                });
-                
-                const timelineItems = document.querySelectorAll('.timeline-item');
-                timelineItems.forEach(item => {
-                    const itemTop = item.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
                     
-                    if (itemTop < windowHeight * 0.8) {
-                        item.classList.add('visible');
+                    if (window.scrollY > 300) {
+                        scrollTopBtn.classList.add('active');
+                    } else {
+                        scrollTopBtn.classList.remove('active');
                     }
-                });
+                    
+                    const sections = document.querySelectorAll('section');
+                    const navLinks = document.querySelectorAll('.nav-links a');
+                    
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        if (scrollY >= (sectionTop - 100)) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === current) {
+                            link.classList.add('active');
+                        }
+                    });
+                    
+                    const timelineItems = document.querySelectorAll('.timeline-item');
+                    timelineItems.forEach(item => {
+                        const itemTop = item.getBoundingClientRect().top;
+                        const windowHeight = window.innerHeight;
+                        
+                        if (itemTop < windowHeight * 0.8) {
+                            item.classList.add('visible');
+                        }
+                    });
+                }, 100);
             });
 
             const hamburger = document.getElementById('hamburger');
